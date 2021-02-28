@@ -1,3 +1,31 @@
-html {
+/* html {
   padding: 2rem;
+} */
+
+.content {
+  padding: 2rem;
+  min-height: 87vh;
+  padding-bottom: 2.5rem;
+}
+
+/* CUSTOM ----------------------------------------- */
+
+/* th,
+td {
+  padding: 0.5rem;
+} */
+
+.custom-table-header {
+  border-bottom: 1px solid rgb(145, 145, 145);
+}
+
+/* #teams {
+}
+
+#player-results {
+  background: orange;
+} */
+
+em {
+  color: red;
 }
