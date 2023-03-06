@@ -1,13 +1,9 @@
-console.log('hello');
-
 const base_url = 'https://www.balldontlie.io/api/v1';
 
 const teamData = fetch(base_url + '/teams')
   .then((response) => response.json())
   .then((json) => {
     let teamData = json.data;
-    console.log('teamData', teamData);
-
     let teamsHtml = '<table class="table table-bordered table-hover">';
     teamsHtml += '<thead class="table-light custom-table-header">';
     teamsHtml += '<tr>';
@@ -39,18 +35,12 @@ async function searchPlayer() {
   )
     .then((response) => response.json())
     .then((json) => json.data);
-  console.log('pbd', playerBioData);
-
   const playerIds = playerBioData.map((player) => player.id);
-  console.log('pid', playerIds);
-
   const playerStatsData = await fetch(
     base_url + '/season_averages?player_ids[]=' + playerIds
   )
     .then((response) => response.json())
     .then((json) => json.data);
-  console.log('psd', playerStatsData);
-
   let playerHtml = '';
 
   if (playerIds.length === 0) {
@@ -110,7 +100,7 @@ async function searchPlayer() {
       for (let j = 0; j < playerStatsData.length; j++) {
         if (playerStatsData[j]['player_id'] === playerIds[i]) {
           playerHtml += '<div class="col-sm p-2">';
-          playerHtml += '<h5>2020 Regular Season Averages</h5>';
+          playerHtml += '<h5>' + playerStatsData[0].season + ' Regular Season Averages</h5>';
 
           playerHtml += '<table class="table table-sm">';
           playerHtml +=
